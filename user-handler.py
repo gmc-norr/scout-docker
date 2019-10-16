@@ -16,7 +16,7 @@ parser.add_argument("--admin",      metavar = "ADMIN",     type = bool,  require
 args = parser.parse_args()
 
 if args.add:
-    if args.username and args.usermail and args.usermail:
+    if args.username and args.usermail and args.instid:
         admin = "--admin" if args.admin else ""
         print("Adding user...")
 #        username = "\\\"{:}\\\"".format(args.username).replace(" ","\ ")
