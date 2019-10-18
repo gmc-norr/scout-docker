@@ -1,5 +1,5 @@
 build:
-	@docker build -t scout:v0.1 ../scout-forked/
+	@docker build -t scout:v4.7.3 ../scout-forked/
 	@docker build -t scout-setup:v1.0 ../scout-docker/scout-setup/
 	@docker build -t scout-import:v1.0 ../scout-docker/scout-import/
 	@docker build -t scout-remove:v1.0 ../scout-docker/scout-remove/
