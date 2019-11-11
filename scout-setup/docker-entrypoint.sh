@@ -2,6 +2,8 @@
 
 scout --port $MONGO_PORT --host $MONGO_HOST setup database --api-key $API_KEY
 
-scout --port $MONGO_PORT --host $MONGO_HOST load institute -d GMS -s nina.norgren@umu.se -i g001
+loqusdb --port $MONGO_PORT --host $MONGO_HOST index
 
-scout --port $MONGO_PORT --host $MONGO_HOST load user --institute-id g001 --user-name "Nina Norgren" --user-mail nina.norgren@umu.se --admin
+scout --port $MONGO_PORT --host $MONGO_HOST load institute -d GMS -s nina.karlsson.norgren@regionvasterbotten.se -i g001
+
+scout --port $MONGO_PORT --host $MONGO_HOST load user --institute-id g001 --user-name "Nina Norgren" --user-mail nina.norgren@umu.se -id nikn02 --admin

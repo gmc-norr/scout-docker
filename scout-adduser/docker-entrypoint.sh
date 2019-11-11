@@ -1,4 +1,4 @@
 #!/bin/bash
 
-scout --port $MONGO_PORT --host $MONGO_HOST load user --institute-id $INSTID --user-name $USERNAME --user-mail $USERMAIL $ADMIN
+scout --port $MONGO_PORT --host $MONGO_HOST load user -i $INSTID -u $NAME -id $ADID -m $USERMAIL $ADMIN
 

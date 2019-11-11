@@ -1,4 +1,4 @@
-FROM scout:v0.1
+FROM scout:latest
 
 COPY docker-entrypoint.sh /scout/docker-entrypoint.sh
 
