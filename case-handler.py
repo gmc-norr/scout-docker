@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import yaml
 
 parser = argparse.ArgumentParser()
 parser = argparse.ArgumentParser(description = "Helper script to add or remove cases from database")
@@ -17,7 +18,13 @@ args = parser.parse_args()
 if args.add:
     if args.folder and args.yaml:
         print("Adding sample...")
-        os.system("docker-compose run --rm -v {:}:/sample -e \"YAML={:}\" scout-import".format(os.path.abspath(args.folder), args.yaml))
+
+        fh      = open("{}/{}".format(args.folder.rstrip('/'), args.yaml), 'r')
+        ydict   = yaml.safe_load(fh)
+        pedfile = os.path.basename(ydict['ped']) if 'ped' in ydict else ""
+        vcffile = os.path.basename(ydict['vcf_snv'])   if 'vcf_snv' in ydict else ""
+
+        os.system("docker-compose run --rm -v {:}:/sample -e \"YAML={:}\" -e \"PED={}\" -e \"VCF={}\" scout-import".format(os.path.abspath(args.folder), args.yaml, pedfile, vcffile))
     else:
         print("Both --folder and --yaml have to be specified, exiting...")
 

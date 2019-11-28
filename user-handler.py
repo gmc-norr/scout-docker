@@ -12,18 +12,17 @@ group.add_argument('--remove',      action='store_true',   help ="Removes sample
 parser.add_argument("--name",       metavar = "NAME",      type = str,   required = False,    help = "Name of user to add")
 parser.add_argument("--instid",     metavar = "INSTID",    type = str,   required = False,    help = "Institute ID for user to be added to")
 parser.add_argument("--adid",       metavar = "ADID",      type = str,   required = False,    help = "AD ID for user to be added to")
-parser.add_argument("--usermail",   metavar = "USERMAIL",  type = str,   required = False,    help = "Email of user to add")
+parser.add_argument("--usermail",   metavar = "USERMAIL",  type = str,   required = False,    help = "Email of user to add or remove")
 parser.add_argument("--admin",      metavar = "ADMIN",     type = bool,  required = False,    help = "Add if user should have admin rights")
 args = parser.parse_args()
 
 if args.add:
-    if args.name and args.usermail and args.instid:
+    if args.name and args.usermail and args.instid and args.adid:
         admin = "--admin" if args.admin else ""
         print("Adding user...")
-        print("docker-compose run --rm -e \"INSTID={:}\" -e \"NAME={:}\" -e \"ADID={:}\" -e \"USERMAIL={:}\" -e \"ADMIN={:}\" scout-adduser".format(args.instid, args.name, args.adid, args.usermail, admin))
         os.system("docker-compose run --rm -e \"INSTID={:}\" -e \"NAME={:}\" -e \"ADID={:}\" -e \"USERMAIL={:}\" -e \"ADMIN={:}\" scout-adduser".format(args.instid, args.name, args.adid, args.usermail, admin))
     else:
-        print("Both --username, --usermail, and --instid have to be specified, exiting...")
+        print("Both --username, --usermail, --adid and --instid have to be specified, exiting...")
 
 
 elif args.remove:

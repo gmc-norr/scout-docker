@@ -1,2 +1,4 @@
 # files not for git
 docker-compose.yml
+setup_demo.sh
+remove_all_cases.sh
